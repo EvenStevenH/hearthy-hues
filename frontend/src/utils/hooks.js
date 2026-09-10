@@ -16,8 +16,6 @@ export function useFetch(url) {
 				let data;
 				if (typeof url === "object") {
 					data = url; // object from local file
-				} else if (url.endsWith(".js")) {
-					data = await import(/* @vite-ignore */ url);
 				} else {
 					const response = await fetch(url);
 					if (!response.ok) {
