@@ -34,6 +34,7 @@ public class EventController {
     @PutMapping("/{id}")
     public Event updateEvent(@PathVariable int id, @RequestBody Event event) {
         if (eventRepository.existsById(id)) {
+            event.setId(id);
             return eventRepository.save(event);
         }
         return null;

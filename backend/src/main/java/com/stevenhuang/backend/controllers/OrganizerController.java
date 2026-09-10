@@ -34,6 +34,7 @@ public class OrganizerController {
     @PutMapping("/{id}")
     public Organizer updateOrganizer(@PathVariable int id, @RequestBody Organizer organizer) {
         if (organizerRepository.existsById(id)) {
+            organizer.setId(id);
             return organizerRepository.save(organizer);
         }
         return null;
