@@ -18,7 +18,7 @@ public class Organizer {
     @Column(nullable = false, unique = true, length = 255)
     private String email;
 
-    @OneToMany(mappedBy = "organizer", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "organizer")
     private List<Event> events;
 
     public int getId() {

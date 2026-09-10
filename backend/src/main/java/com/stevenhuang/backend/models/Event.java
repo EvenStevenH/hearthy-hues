@@ -38,12 +38,12 @@ public class Event {
     @Column(precision = 10, scale = 2)
     private BigDecimal price;
 
-    @ElementCollection(fetch = FetchType.LAZY)
+    @ElementCollection
     @CollectionTable(name = "event_tags", joinColumns = @JoinColumn(name = "event_id"))
     @Column(name = "tag")
     private List<String> tags;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "organizer_id", nullable = false)
     private Organizer organizer;
 
