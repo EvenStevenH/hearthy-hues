@@ -2,21 +2,18 @@ import ErrorMessage from "../ErrorMessage";
 import Loader from "../Loader";
 import EventCard from "./EventCard";
 import { sortByStartDate } from "../../utils/eventUtils";
-import { events as eventsData } from "../../data/events.js";
-import { useFetch } from "../../utils/hooks.js";
 
-export default function EventsPage() {
-	const { data: events, loading, error } = useFetch(eventsData);
-	if (loading) return <Loader />;
-	if (error) return <ErrorMessage message={error} />;
+export default function EventsPage({ events }) {
+	if (events.loading) return <Loader />;
+	if (events.error) return <ErrorMessage message={events.error} />;
 
 	return (
 		<main>
 			<h1>Events</h1>
 
-			{events.length ? (
+			{events.data.length ? (
 				<section className="grid gridEvents">
-					{events
+					{events.data
 						.sort((a, b) => sortByStartDate(a, b, "startDate"))
 						.map((event) => (
 							<EventCard
