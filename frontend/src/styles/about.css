@@ -1,0 +1,102 @@
+.about {
+	margin: auto;
+	display: grid;
+	grid-template-columns: 2fr 1.2fr;
+	gap: 1em;
+}
+
+#aboutSection {
+	padding: 0;
+	flex-direction: column;
+}
+
+#aboutSection p {
+	margin-bottom: 0.5em;
+}
+
+#aboutSection ul {
+	margin-bottom: 1em;
+}
+
+#aboutSection li {
+	margin-bottom: 0.5em;
+}
+
+.aboutContent {
+	padding: 2em;
+}
+
+#aboutImg {
+	width: 100%;
+	height: 200px;
+	display: block;
+	object-fit: cover;
+	border-radius: 0.5em 0.5em 0 0;
+	filter: brightness(0.8) sepia(40%) contrast(80%);
+}
+
+.aboutTable {
+	width: 100%;
+	text-align: left;
+	border-collapse: collapse;
+	margin-bottom: 1em;
+}
+
+.aboutTable th,
+.aboutTable td {
+	padding: 0.5em;
+	border-bottom: 1px solid var(--light3);
+}
+
+.aboutTable #aboutTableLeft {
+	width: 20%;
+}
+
+/* -------------------------------------------------------------------------- */
+.contactSection {
+	display: flex;
+	flex-direction: column;
+}
+
+.contactForm {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.contactFormTop {
+	display: flex;
+	gap: 1rem;
+}
+
+.messageField {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.messageField textarea {
+	flex: 1;
+	min-height: 120px;
+}
+
+#character-counter {
+	margin-top: 0.5em;
+	text-align: right;
+	color: var(--dark2);
+}
+
+#formMsg {
+	text-align: center;
+	color: var(--dark2);
+}
+
+@media screen and (max-width: 1200px) {
+	.about {
+		grid-template-columns: 1fr;
+	}
+
+	.contactFormTop {
+		flex-direction: column;
+	}
+}
