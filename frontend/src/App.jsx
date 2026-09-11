@@ -12,13 +12,17 @@ import { EventsProvider } from "./utils/EventsContext.jsx";
 import { Routes, Route, Navigate, useLocation } from "react-router";
 import { useLocalStorage, useFetch } from "./utils/hooks";
 import { useState } from "react";
-import { events as eventsData } from "./data/events.js";
+import { events as localEventData } from "./data/events.js";
 
 export default function App() {
 	const [isLoggedIn, setIsLoggedIn] = useLocalStorage("isLoggedIn", false);
 	const [menuOpen, setMenuOpen] = useState(false);
-	const events = useFetch(eventsData);
 	const location = useLocation();
+
+	// get events > from server via API, else from local files
+	const apiEvents = useFetch("http://localhost:8080/api/events");
+	const localEvents = useFetch(localEventData);
+	const events = apiEvents.error ? localEvents : apiEvents;
 
 	return (
 		<>
@@ -59,7 +63,6 @@ export default function App() {
 											element={<About />}
 										/>
 									</Route>
-
 									<Route
 										path="*"
 										element={<Navigate to="/dashboard" />}
