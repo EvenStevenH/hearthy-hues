@@ -1,6 +1,6 @@
 import { eventImages as images } from "./images";
 
-export const tags = ["comics", "convention", "crafts", "exhibition", "festival", "film", "market", "open studio", "painting", "performance", "photography", "sculpture", "social", "talk", "tour", "workshop"];
+export const tags = ["comics", "convention", "crafts", "exhibition", "festival", "film", "market", "open studio", "painting", "performance", "photography", "sculpture", "social", "talks", "tour", "workshop"];
 
 export const events = [
 	{
@@ -14,6 +14,7 @@ export const events = [
 		notes: "Creatives of all skill levels are invited. Pet-friendly.",
 		img: images.coffee,
 		price: 0,
+		organizerId: 2,
 	},
 	{
 		id: 1783457854132,
@@ -26,6 +27,7 @@ export const events = [
 		notes: "Registration required for gallery access.",
 		img: images.museum,
 		price: 8,
+		organizerId: 2,
 	},
 	{
 		id: 1783457854133,
@@ -38,6 +40,7 @@ export const events = [
 		notes: "Open to the public. Parking available nearby.",
 		img: images.fair,
 		price: 0,
+		organizerId: 2,
 	},
 	{
 		id: 1783457854134,
@@ -50,6 +53,7 @@ export const events = [
 		notes: "Tickets required. 18+ for some screenings.",
 		img: images.film,
 		price: 24,
+		organizerId: 2,
 	},
 	{
 		id: 1783457854135,
@@ -62,6 +66,7 @@ export const events = [
 		notes: "Free entry. Registration required.",
 		img: images.studio,
 		price: 0,
+		organizerId: 2,
 	},
 	{
 		id: 1783457854136,
@@ -74,6 +79,7 @@ export const events = [
 		notes: "All ages and family-friendly. Supplies included, while they last.",
 		img: images.crafts,
 		price: 0,
+		organizerId: 2,
 	},
 	{
 		id: 1783457854137,
@@ -86,6 +92,7 @@ export const events = [
 		notes: "Be sure to bring your own supplies!",
 		img: images.watercolor,
 		price: 0,
+		organizerId: 2,
 	},
 	{
 		id: 1783457854138,
@@ -98,6 +105,7 @@ export const events = [
 		notes: "18+. Chairs and boards provided. Artists should come prepared with their own art materials.",
 		img: images.nightlife,
 		price: 12,
+		organizerId: 2,
 	},
 	{
 		id: 1783457854139,
@@ -110,5 +118,6 @@ export const events = [
 		notes: "All-inclusive and centers around people of diverse identities. Drinks available, with ID.",
 		img: images.band,
 		price: 20,
+		organizerId: 2,
 	},
 ];
