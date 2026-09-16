@@ -11,8 +11,8 @@ export function EventsProvider({ children }) {
 		<EventsContext.Provider
 			value={{
 				savedEvents,
-				addEvent: (id) => setSavedEvents((prev) => [...prev, id]),
-				removeEvent: (id) => setSavedEvents((prev) => prev.filter((fav) => fav !== id)),
+				saveEvent: (id) => setSavedEvents((prev) => [...prev, id]),
+				unsaveEvent: (id) => setSavedEvents((prev) => prev.filter((fav) => fav !== id)),
 				isEvent: (id) => savedEvents.includes(id),
 			}}
 		>
