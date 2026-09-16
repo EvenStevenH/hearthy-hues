@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useLocalStorage } from "./hooks.js";
-import { fetchAllEvents, createEvent as apiCreateEvent, updateEvent as apiUpdateEvent, deleteEvent as apiDeleteEvent } from "./eventApi.js";
+import { fetchAllEvents, createEvent as apiCreateEvent, updateEvent as apiUpdateEvent, deleteEvent as apiDeleteEvent, fetchOneEvent as apiFetchOneEvent } from "./eventApi.js";
 import { events as localEventData } from "../data/events.js";
 
 const EventsContext = createContext();
@@ -30,6 +30,10 @@ export function EventsProvider({ children }) {
 		loadEvents();
 	}, []);
 
+	async function fetchOneEvent(id) {
+		return apiFetchOneEvent(id);
+	}
+
 	async function createEvent(event) {
 		const newEvent = await apiCreateEvent(event);
 		setEvents((prev) => [...prev, newEvent]);
@@ -38,13 +42,13 @@ export function EventsProvider({ children }) {
 
 	async function updateEvent(id, event) {
 		const updatedEvent = await apiUpdateEvent(id, event);
-		setEvents((prev) => prev.map((event) => (event.id === id ? updatedEvent : event)));
+		setEvents((prev) => prev.map((item) => (String(item.id) === String(id) ? updatedEvent : item)));
 		return updatedEvent;
 	}
 
 	async function deleteEvent(id) {
 		await apiDeleteEvent(id);
-		setEvents((prev) => prev.filter((event) => event.id !== id));
+		setEvents((prev) => prev.filter((item) => String(item.id) !== String(id)));
 	}
 
 	return (
@@ -53,6 +57,7 @@ export function EventsProvider({ children }) {
 				events,
 				loading,
 				error,
+				fetchOneEvent,
 				createEvent,
 				updateEvent,
 				deleteEvent,
