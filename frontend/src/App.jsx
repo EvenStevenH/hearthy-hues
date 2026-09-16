@@ -7,6 +7,7 @@ import UserPage from "./components/user/UserPage.jsx";
 import EventsPage from "./components/events/EventsPage.jsx";
 import EventDetails from "./components/events/EventDetails.jsx";
 import AnimatedRoutes from "./components/AnimatedRoutes.jsx";
+import EventFormPage from "./components/events/EventFormPage.jsx";
 import { AnimatePresence } from "framer-motion";
 import { EventsProvider } from "./utils/EventsContext.jsx";
 import { Routes, Route, Navigate, useLocation } from "react-router";
@@ -45,8 +46,16 @@ export default function App() {
 											element={<EventsPage />}
 										/>
 										<Route
+											path="/events/new"
+											element={<EventFormPage />}
+										/>
+										<Route
 											path="/events/:eventId"
 											element={<EventDetails />}
+										/>
+										<Route
+											path="/events/:eventId/edit"
+											element={<EventFormPage />}
 										/>
 										<Route
 											path="/user"
