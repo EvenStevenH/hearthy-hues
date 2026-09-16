@@ -15,7 +15,7 @@ export default function EventsPage() {
 
 			{events.length ? (
 				<section className="grid gridEvents">
-					{events
+					{[...events]
 						.sort((a, b) => sortByStartDate(a, b, "startDate"))
 						.map((event) => (
 							<EventCard
