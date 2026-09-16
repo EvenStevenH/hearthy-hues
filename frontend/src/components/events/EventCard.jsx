@@ -65,9 +65,19 @@ export default function EventCard({ event }) {
 					<FaNewspaper /> Details
 				</Link>
 
-				<button onClick={handleEdit}>Edit</button>
+				<button
+					id="eventEditBtn"
+					onClick={handleEdit}
+				>
+					Edit
+				</button>
 
-				<button onClick={handleDelete}>Delete</button>
+				<button
+					id="eventDeleteBtn"
+					onClick={handleDelete}
+				>
+					Delete
+				</button>
 			</div>
 		</div>
 	);
