@@ -29,6 +29,13 @@ export function formatDate(startDate, weekday, month) {
 	return new Date(startDate).toLocaleDateString("en-US", options);
 }
 
+export function getCurrentDateTime() {
+	const now = new Date();
+	const offset = now.getTimezoneOffset();
+	const localDate = new Date(now.getTime() - offset * 60 * 1000);
+	return localDate.toISOString().slice(0, 16);
+}
+
 export function sortByStartDate(a, b, date) {
 	return new Date(a[date]).getTime() - new Date(b[date]).getTime();
 }
