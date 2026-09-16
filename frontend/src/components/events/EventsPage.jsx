@@ -3,6 +3,7 @@ import Loader from "../Loader";
 import EventCard from "./EventCard";
 import { sortByStartDate } from "../../utils/eventUtils";
 import { useEvents } from "../../utils/EventsContext";
+import { Link } from "react-router";
 
 export default function EventsPage() {
 	const { events, loading, error } = useEvents();
@@ -12,6 +13,14 @@ export default function EventsPage() {
 	return (
 		<main>
 			<h1>Events</h1>
+
+			<Link
+				to="/events/new"
+				id="eventCreateBtn"
+				className="button"
+			>
+				Create Event
+			</Link>
 
 			{events.length ? (
 				<section className="grid gridEvents">
