@@ -6,22 +6,30 @@ import ErrorMessage from "../ErrorMessage.jsx";
 import { FaBookmark } from "react-icons/fa6";
 import { IoIosArrowBack } from "react-icons/io";
 
-export default function EventDetails({ events }) {
+export default function EventDetails() {
 	const { eventId } = useParams();
-	const { addEvent, removeEvent, isEvent } = useEvents();
-	const { data, loading, error } = events;
 	const navigate = useNavigate();
+	const { events, loading, error, saveEvent, unsaveEvent, isSavedEvent, deleteEvent } = useEvents();
 
-	if (loading) return <Loader />;
-	if (error) return error && <ErrorMessage message={error} />;
+	async function handleDelete() {
+		await deleteEvent(event.id);
+		navigate("/events");
+	}
+
+	const handleEdit = () => {
+		navigate(`/events/${event.id}/edit`);
+	};
 
 	function handleBack() {
 		window.history.length > 1 ? navigate(-1) : navigate("/events");
 	}
 
-	const event = data.find((event) => String(event.id) === eventId);
+	const event = events.find((event) => String(event.id) === eventId);
 	if (!event) return navigate("/events");
-	const isSavedEvent = isEvent(event.id);
+	const isSaved = isSavedEvent(event.id);
+
+	if (loading) return <Loader />;
+	if (error) return error && <ErrorMessage message={error} />;
 
 	return (
 		<main className="container eventDetails">
@@ -64,10 +72,10 @@ export default function EventDetails({ events }) {
 				<div className="cardBtns">
 					<button
 						id="eventSaveBtn"
-						onClick={() => (isSavedEvent ? removeEvent(event.id) : addEvent(event.id))}
-						className={isSavedEvent ? "saved" : ""}
+						onClick={() => (isSaved ? unsaveEvent(event.id) : saveEvent(event.id))}
+						className={isSaved ? "saved" : ""}
 					>
-						<FaBookmark /> {isSavedEvent ? "Unsave" : "I'm Interested!"}
+						<FaBookmark /> {isSaved ? "Unsave" : "I'm Interested!"}
 					</button>
 
 					<button
@@ -77,6 +85,10 @@ export default function EventDetails({ events }) {
 					>
 						<IoIosArrowBack /> Back
 					</button>
+
+					<button onClick={handleEdit}>Edit</button>
+
+					<button onClick={handleDelete}>Delete</button>
 				</div>
 			</section>
 		</main>

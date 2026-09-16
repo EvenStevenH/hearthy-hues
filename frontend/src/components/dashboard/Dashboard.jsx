@@ -10,16 +10,16 @@ import { sortByStartDate } from "../../utils/eventUtils";
 import { subjects as ideasData } from "../../data/ideas.js";
 import { feed as feedData } from "../../data/feed.js";
 
-export default function Dashboard({ events }) {
-	const { savedEvents, removeEvent } = useEvents();
+export default function Dashboard() {
+	const { events, loading: eventsLoading, error: eventsError, savedEvents, unsaveEvent } = useEvents();
 	const subjects = useFetch(ideasData);
 	const feed = useFetch(feedData);
 
-	if (events.loading || subjects.loading || feed.loading) return <Loader />;
-	if (events.error || subjects.error || feed.error)
+	if (eventsLoading || subjects.loading || feed.loading) return <Loader />;
+	if (eventsError || subjects.error || feed.error)
 		return (
 			<>
-				<ErrorMessage message={events.error} />
+				<ErrorMessage message={eventsError} />
 				<ErrorMessage message={subjects.error} />
 				<ErrorMessage message={feed.error} />
 			</>
@@ -66,14 +66,14 @@ export default function Dashboard({ events }) {
 
 				{savedEvents.length ? (
 					<div className="gridDashboard">
-						{events.data
+						{events
 							.filter((event) => savedEvents.includes(event.id))
 							.sort((a, b) => sortByStartDate(a, b, "startDate"))
 							.map((event) => (
 								<EventCard
 									event={event}
 									key={event.id}
-									removeEvent={() => removeEvent(event.id)}
+									unsaveEvent={() => unsaveEvent(event.id)}
 								/>
 							))}
 					</div>

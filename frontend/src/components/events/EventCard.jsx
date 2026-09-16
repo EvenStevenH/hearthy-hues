@@ -1,11 +1,21 @@
 import { formatDate, formatTimeRange } from "../../utils/eventUtils.js";
 import { useEvents } from "../../utils/EventsContext.jsx";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { FaBookmark, FaNewspaper } from "react-icons/fa6";
 
 export default function EventCard({ event }) {
-	const { addEvent, removeEvent, isEvent } = useEvents();
-	const isSavedEvent = isEvent(event.id);
+	const { saveEvent, unsaveEvent, isSavedEvent, deleteEvent } = useEvents();
+	const navigate = useNavigate();
+	const isSaved = isSavedEvent(event.id);
+
+	async function handleDelete() {
+		await deleteEvent(event.id);
+		navigate("/events");
+	}
+
+	const handleEdit = () => {
+		navigate(`/events/${event.id}/edit`);
+	};
 
 	return (
 		<div className="container card eventCard">
@@ -41,10 +51,10 @@ export default function EventCard({ event }) {
 			<div className="cardBtns">
 				<button
 					id="eventSaveBtn"
-					onClick={() => (isSavedEvent ? removeEvent(event.id) : addEvent(event.id))}
-					className={isSavedEvent ? "saved" : ""}
+					onClick={() => (isSaved ? unsaveEvent(event.id) : saveEvent(event.id))}
+					className={isSaved ? "saved" : ""}
 				>
-					<FaBookmark /> {isSavedEvent ? "Unsave" : "I'm Interested!"}
+					<FaBookmark /> {isSaved ? "Unsave" : "I'm Interested!"}
 				</button>
 
 				<Link
@@ -54,6 +64,10 @@ export default function EventCard({ event }) {
 				>
 					<FaNewspaper /> Details
 				</Link>
+
+				<button onClick={handleEdit}>Edit</button>
+
+				<button onClick={handleDelete}>Delete</button>
 			</div>
 		</div>
 	);
