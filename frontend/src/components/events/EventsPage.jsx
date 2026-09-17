@@ -4,6 +4,7 @@ import EventCard from "./EventCard";
 import { sortByStartDate } from "../../utils/eventUtils";
 import { useEvents } from "../../utils/EventsContext";
 import { Link } from "react-router";
+import { MdEdit } from "react-icons/md";
 
 export default function EventsPage() {
 	const { events, loading, error } = useEvents();
@@ -19,7 +20,7 @@ export default function EventsPage() {
 				id="eventCreateBtn"
 				className="button"
 			>
-				Create Event
+				Create Event <MdEdit />
 			</Link>
 
 			{events.length ? (

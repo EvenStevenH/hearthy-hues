@@ -4,6 +4,8 @@ import { useEvents } from "../../utils/EventsContext.jsx";
 import Loader from "../Loader.jsx";
 import ErrorMessage from "../ErrorMessage.jsx";
 import { getCurrentDateTime } from "../../utils/eventUtils.js";
+import { FaCheck } from "react-icons/fa";
+import { IoIosArrowBack } from "react-icons/io";
 
 export const tags = ["comics", "convention", "crafts", "exhibition", "festival", "film", "market", "open studio", "painting", "performance", "photography", "sculpture", "social", "talks", "tour", "workshop"];
 
@@ -246,7 +248,7 @@ export default function EventFormPage() {
 						id="submitBtn"
 						type="submit"
 					>
-						{isEditing ? "Save Changes" : "Create Event"}
+						{isEditing ? "Save Changes" : "Create Event"} <FaCheck />
 					</button>
 
 					<button
@@ -254,7 +256,7 @@ export default function EventFormPage() {
 						type="button"
 						onClick={handleCancel}
 					>
-						Cancel
+						Cancel <IoIosArrowBack />
 					</button>
 				</div>
 			</form>

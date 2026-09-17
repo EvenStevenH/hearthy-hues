@@ -1,7 +1,9 @@
 import { formatDate, formatTimeRange, getCurrentDateTime } from "../../utils/eventUtils.js";
 import { useEvents } from "../../utils/EventsContext.jsx";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { FaBookmark, FaNewspaper } from "react-icons/fa6";
+import { MdEdit } from "react-icons/md";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 export default function EventCard({ event }) {
 	const { saveEvent, unsaveEvent, isSavedEvent, deleteEvent } = useEvents();
@@ -16,6 +18,10 @@ export default function EventCard({ event }) {
 
 	const handleEdit = () => {
 		navigate(`/events/${event.id}/edit`);
+	};
+
+	const handleViewDetails = () => {
+		navigate(`/events/${event.id}`);
 	};
 
 	return (
@@ -55,29 +61,28 @@ export default function EventCard({ event }) {
 					onClick={() => (isSaved ? unsaveEvent(event.id) : saveEvent(event.id))}
 					className={isSaved ? "saved" : ""}
 				>
-					<FaBookmark /> {isSaved ? "Unsave" : "I'm Interested!"}
+					{isSaved ? "Unsave" : "Save"} <FaBookmark />
 				</button>
 
-				<Link
-					to={`/events/${event.id}`}
+				<button
+					onClick={handleViewDetails}
 					id="eventDetailsBtn"
-					className="button"
 				>
-					<FaNewspaper /> Details
-				</Link>
+					Details <FaNewspaper />
+				</button>
 
 				<button
 					id="eventEditBtn"
 					onClick={handleEdit}
 				>
-					Edit
+					Edit <MdEdit />
 				</button>
 
 				<button
 					id="eventDeleteBtn"
 					onClick={handleDelete}
 				>
-					Delete
+					Delete <FaRegTrashAlt />
 				</button>
 			</div>
 		</div>
