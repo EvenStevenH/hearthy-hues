@@ -1,0 +1,143 @@
+.loginPage {
+	display: flex;
+	min-height: 500px;
+	height: 100vh;
+	max-width: 100%;
+	padding: 0;
+	color: var(--dark1);
+}
+
+.leftPane {
+	flex: 1.5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	background-color: var(--dark1);
+}
+
+.loginBg {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 1;
+	opacity: 0.8;
+	filter: brightness(0.2) contrast(0.8) sepia(0.4);
+}
+
+.rightPane {
+	background-color: var(--light1);
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 1em;
+}
+
+.loginPanel {
+	width: 500px;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	border-radius: 1em;
+	padding: 2em;
+}
+
+.loginTop {
+	margin-bottom: 1.5em;
+	text-align: center;
+}
+
+.loginTop h1 {
+	font-size: 2em;
+	margin-bottom: 0;
+}
+
+.loginTop p {
+	color: var(--dark2);
+}
+
+.loginPanel a {
+	color: var(--orange1);
+}
+
+.register {
+	margin-top: 1.5em;
+	text-align: center;
+}
+
+.credentials {
+	margin: auto;
+	text-align: left;
+}
+
+#loginMsg {
+	max-width: 300px;
+	margin: auto;
+	margin-top: 1em;
+	color: var(--dark2);
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+#loginBtn {
+	padding: 1em;
+	margin-top: 1em;
+}
+
+/* -------------------------------------------------------------------------- */
+#logoLoginLeft {
+	color: var(--light1);
+	text-align: center;
+	flex-direction: column;
+	z-index: 2;
+}
+
+#logoLoginLeft .logoImg {
+	width: 180px;
+}
+
+#logoLoginLeft .logoText {
+	font-size: 2em;
+}
+
+#logoLoginRight {
+	display: none;
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+#logoLoginRight .logoImg {
+	width: 120px;
+}
+
+/* -------------------------------------------------------------------------- */
+@media screen and (max-width: 1000px) {
+	.leftPane {
+		display: none;
+	}
+
+	.loginPanel {
+		width: auto;
+		padding: 1em;
+	}
+
+	#logoLoginRight {
+		display: block;
+	}
+
+	.loginTop h1 {
+		font-size: 1.5em;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	#logoLoginRight .logoText {
+		font-size: 1em;
+	}
+}

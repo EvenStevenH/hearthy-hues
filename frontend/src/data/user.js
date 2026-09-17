@@ -1,0 +1,56 @@
+import { postImages as images } from "./images";
+
+export const user = {
+	userId: 1,
+	username: "Steven Huang",
+	tagline: "Illustrator",
+	profileImg: images.origami,
+	bgImg: null,
+	website: "https://github.com/EvenStevenH",
+	followers: 8240,
+	following: 56,
+	postCount: 208,
+	availability: "Open to collaborations!",
+	bio: "Software engineer and artist dedicated to learning new skills and creating with intention! Sings as a hobby, with a three-octave vocal range and a bunch of instruments. Loves cooking homemade meals.",
+};
+
+export const friends = [
+	{
+		userId: 2,
+		username: "Samuel Blairse",
+		tagline: "Maritime Painter",
+		profileImg: images.animal2,
+		bgImg: null,
+		website: null,
+		followers: 40000,
+		following: 3,
+		postCount: 12,
+		availability: "On hiatus.",
+		bio: "Traditional artist specializing in paintings of sailing ships. Ye olde sea dog.",
+	},
+	{
+		userId: 3,
+		username: "Biko Baako",
+		tagline: "Street Artist and Muralist",
+		profileImg: images.animal1,
+		bgImg: null,
+		website: null,
+		followers: 1200,
+		following: 24,
+		postCount: 520,
+		availability: "Looking for new projects!",
+		bio: "Living off inspiration from the world! Will go feral for grilled cheese (please and thanks).",
+	},
+	{
+		userId: 4,
+		username: "Olivier Pastore",
+		tagline: "Guitarist for Wild Dog Daze",
+		profileImg: images.animal3,
+		bgImg: null,
+		followers: 6000,
+		following: 8,
+		postCount: 54,
+		availability: "Open to gigs!",
+		bio: "Need more free barking spots!",
+	},
+];

@@ -33,7 +33,7 @@ public class Event {
     private String notes;
 
     @Column(nullable = false, length = 255)
-    private String imgPath;
+    private String img;
 
     @Column(precision = 10, scale = 2)
     private BigDecimal price;
@@ -111,12 +111,12 @@ public class Event {
         this.notes = notes;
     }
 
-    public String getImgPath() {
-        return imgPath;
+    public String getImg() {
+        return img;
     }
 
-    public void setImgPath(String imgPath) {
-        this.imgPath = imgPath;
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public BigDecimal getPrice() {
