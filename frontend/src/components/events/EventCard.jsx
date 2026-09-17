@@ -1,4 +1,4 @@
-import { formatDate, formatTimeRange } from "../../utils/eventUtils.js";
+import { formatDate, formatTimeRange, getCurrentDateTime } from "../../utils/eventUtils.js";
 import { useEvents } from "../../utils/EventsContext.jsx";
 import { Link, useNavigate } from "react-router";
 import { FaBookmark, FaNewspaper } from "react-icons/fa6";
@@ -7,6 +7,7 @@ export default function EventCard({ event }) {
 	const { saveEvent, unsaveEvent, isSavedEvent, deleteEvent } = useEvents();
 	const navigate = useNavigate();
 	const isSaved = isSavedEvent(event.id);
+	const isPastEvent = event.startDate < getCurrentDateTime();
 
 	async function handleDelete() {
 		await deleteEvent(event.id);
@@ -18,7 +19,7 @@ export default function EventCard({ event }) {
 	};
 
 	return (
-		<div className="container card eventCard">
+		<div className={`container card eventCard ${isPastEvent ? "pastEvent" : ""}`}>
 			<img
 				src={event.img.url}
 				alt={event.img.alt}
