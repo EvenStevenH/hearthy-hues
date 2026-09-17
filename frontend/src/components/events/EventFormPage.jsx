@@ -70,17 +70,17 @@ export default function EventFormPage() {
 	}
 
 	function validateForm() {
-		const newErrors = {};
-		if (!formData.title.trim()) newErrors.title = "Title is required.";
-		if (!formData.startDate) newErrors.startDate = "Start date is required.";
-		if (!formData.endDate) newErrors.endDate = "End date is required.";
-		if (!formData.location.trim()) newErrors.location = "Location is required.";
-		if (formData.price !== "" && Number(formData.price) < 0) newErrors.price = "Price cannot be negative.";
+		const errors = {};
+		if (!formData.title.trim()) errors.title = "Title is required.";
+		if (!formData.startDate) errors.startDate = "Start date is required.";
+		if (!formData.endDate) errors.endDate = "End date is required.";
+		if (!formData.location.trim()) errors.location = "Location is required.";
+		if (formData.price !== "" && Number(formData.price) < 0) errors.price = "Price cannot be negative.";
 		if (formData.startDate && formData.endDate && new Date(formData.endDate) < new Date(formData.startDate)) {
-			newErrors.endDate = "End date must be the same as or after the start date.";
+			errors.endDate = "End date must be the same as or after the start date.";
 		}
-		setErrors(newErrors);
-		return Object.keys(newErrors).length === 0;
+		setErrors(errors);
+		return Object.keys(errors).length === 0;
 	}
 
 	async function handleSubmit(event) {

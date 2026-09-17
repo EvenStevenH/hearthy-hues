@@ -12,6 +12,7 @@ export function EventsProvider({ children }) {
 	const [events, setEvents] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+	
 	useEffect(() => {
 		async function loadEvents() {
 			try {
@@ -49,6 +50,19 @@ export function EventsProvider({ children }) {
 	async function deleteEvent(id) {
 		await apiDeleteEvent(id);
 		setEvents((prev) => prev.filter((item) => String(item.id) !== String(id)));
+		unsaveEvent(id);
+	}
+
+	function unsaveEvent(id) {
+		return setSavedEvents((prev) => prev.filter((fav) => fav !== id));
+	}
+
+	function saveEvent(id) {
+		return setSavedEvents((prev) => [...prev, id]);
+	}
+
+	function isSavedEvent(id) {
+		savedEvents.includes(id);
 	}
 
 	return (
@@ -62,9 +76,9 @@ export function EventsProvider({ children }) {
 				updateEvent,
 				deleteEvent,
 				savedEvents,
-				saveEvent: (id) => setSavedEvents((prev) => [...prev, id]),
-				unsaveEvent: (id) => setSavedEvents((prev) => prev.filter((fav) => fav !== id)),
-				isSavedEvent: (id) => savedEvents.includes(id),
+				saveEvent,
+				unsaveEvent,
+				isSavedEvent,
 			}}
 		>
 			{children}
