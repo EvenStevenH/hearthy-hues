@@ -12,7 +12,6 @@ export function EventsProvider({ children }) {
 	const [events, setEvents] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
-	
 	useEffect(() => {
 		async function loadEvents() {
 			try {
@@ -61,10 +60,6 @@ export function EventsProvider({ children }) {
 		return setSavedEvents((prev) => [...prev, id]);
 	}
 
-	function isSavedEvent(id) {
-		savedEvents.includes(id);
-	}
-
 	return (
 		<EventsContext.Provider
 			value={{
@@ -78,7 +73,7 @@ export function EventsProvider({ children }) {
 				savedEvents,
 				saveEvent,
 				unsaveEvent,
-				isSavedEvent,
+				isSavedEvent: (id) => savedEvents.includes(id),
 			}}
 		>
 			{children}
