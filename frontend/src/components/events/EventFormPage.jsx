@@ -109,12 +109,12 @@ export default function EventFormPage() {
 	if (error) return <ErrorMessage message={error} />;
 
 	return (
-		<main className="container eventFormPage">
+		<main className="eventFormPage">
 			<h1>{isEditing ? "Edit Event" : "Create Event"}</h1>
 
 			<form
 				onSubmit={handleSubmit}
-				className="eventForm"
+				className="container eventForm"
 			>
 				<div>
 					<label htmlFor="title">Title</label>
@@ -141,7 +141,7 @@ export default function EventFormPage() {
 					/>
 				</div>
 
-				<div>
+				<div className="formRow2Col">
 					<div>
 						<label htmlFor="startDate">Start</label>
 						<input
@@ -169,46 +169,48 @@ export default function EventFormPage() {
 					</div>
 				</div>
 
-				<div>
-					<label htmlFor="location">Location</label>
-					<input
-						id="location"
-						name="location"
-						type="text"
-						value={formData.location}
-						onChange={handleChange}
-						placeholder="Enter a location..."
-						required
-					/>
-					{errors.location && <p className="formError">{errors.location}</p>}
-				</div>
+				<div className="formRow3Col">
+					<div>
+						<label htmlFor="location">Location</label>
+						<input
+							id="location"
+							name="location"
+							type="text"
+							value={formData.location}
+							onChange={handleChange}
+							placeholder="Enter a location..."
+							required
+						/>
+						{errors.location && <p className="formError">{errors.location}</p>}
+					</div>
 
-				<div>
-					<label htmlFor="price">Price</label>
-					<input
-						id="price"
-						name="price"
-						type="number"
-						min="0"
-						step="0.01"
-						value={formData.price}
-						onChange={handleChange}
-						placeholder="0"
-					/>
-					{errors.price && <p className="formError">{errors.price}</p>}
-				</div>
+					<div>
+						<label htmlFor="price">Price</label>
+						<input
+							id="price"
+							name="price"
+							type="number"
+							min="0"
+							step="1"
+							value={formData.price}
+							onChange={handleChange}
+							placeholder="0"
+						/>
+						{errors.price && <p className="formError">{errors.price}</p>}
+					</div>
 
-				<div>
-					<label htmlFor="img">Image</label>
-					<select
-						id="img"
-						name="img"
-						value={formData.img}
-						onChange={handleChange}
-					>
-						<option value="">Select an image</option>
-					</select>
-					{errors.img && <p className="formError">{errors.img}</p>}
+					<div>
+						<label htmlFor="img">Image</label>
+						<select
+							id="img"
+							name="img"
+							value={formData.img}
+							onChange={handleChange}
+						>
+							<option value="">Select an image</option>
+						</select>
+						{errors.img && <p className="formError">{errors.img}</p>}
+					</div>
 				</div>
 
 				<fieldset>

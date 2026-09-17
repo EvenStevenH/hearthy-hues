@@ -1,3 +1,5 @@
+/* events page and cards */
+
 .gridEvents {
 	display: grid;
 	gap: 1em;
@@ -60,13 +62,44 @@
 	margin-bottom: 0.5em;
 }
 
-.tag {
+.tag,
+.eventFormTags label {
 	border-radius: 0.4em;
 	font-size: 0.8em;
 	letter-spacing: 2px;
 	padding: 0.2em 0.8em;
 	background: var(--light3);
 	color: var(--dark2);
+}
+
+.eventFormTags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.8em;
+}
+
+.eventFormTags label {
+	position: relative;
+	text-transform: uppercase;
+	cursor: pointer;
+	user-select: none;
+	padding: 0.4em 1.2em;
+	transition: all 0.2s ease;
+	border: none;
+}
+
+.eventFormTags input[type="checkbox"] {
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.eventFormTags input[type="checkbox"]:checked + span,
+.eventFormTags label:has(input:checked) {
+	background-color: var(--orange1);
+	color: var(--light1);
+	border-color: var(--orange1);
 }
 
 .notes {
@@ -91,7 +124,8 @@
 .cardBtns {
 	margin-top: auto;
 	width: 100%;
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
 	gap: 0.5em;
 }
 
@@ -100,7 +134,8 @@
 }
 
 #eventDetailsBtn,
-#backBtn {
+#backBtn,
+#cancelBtn {
 	background: var(--light4);
 	color: var(--dark1);
 	text-decoration: none;
@@ -116,6 +151,8 @@
 }
 
 /* -------------------------------------------------------------------------- */
+/* event details */
+
 .eventDetails {
 	padding: 3em;
 	flex-direction: row;
@@ -138,6 +175,71 @@
 
 .eventDetails > .cardDetails > .cardBtns {
 	margin-top: 1em;
+}
+
+/* -------------------------------------------------------------------------- */
+/* event form */
+
+#eventCreateBtn {
+	margin: 2em 0;
+	font-size: 1.1em;
+}
+
+.formRow2Col {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1em;
+}
+
+.formRow3Col {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1em;
+}
+
+.eventForm {
+	gap: 1.5em;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.eventForm fieldset {
+	border: none;
+}
+
+.eventForm label[for],
+.eventForm legend {
+	display: block;
+	font-weight: bold;
+	color: var(--dark2);
+	margin-bottom: 0.4em;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 0.9em;
+}
+
+.formError {
+	color: var(--red1);
+	font-size: 0.8em;
+	margin-top: 0.2em;
+	font-weight: bold;
+	padding-left: 0.5em;
+	border-left: 2px solid var(--red1);
+}
+
+.eventFormActions {
+	display: flex;
+	gap: 1em;
+	justify-content: flex-end;
+}
+
+#submitBtn,
+#cancelBtn {
+	padding: 0.8em 2em;
+	font-size: 1em;
+	border-radius: 0.5em;
+	transition: all 0.2s ease;
+	letter-spacing: 1px;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -167,6 +269,17 @@
 
 @media screen and (max-width: 600px) {
 	.cardBtns {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.formRow2Col,
+	.formRow3Col {
+		grid-template-columns: 1fr;
+		gap: 1em;
+	}
+
+	.eventFormActions {
 		flex-direction: column;
 	}
 }
