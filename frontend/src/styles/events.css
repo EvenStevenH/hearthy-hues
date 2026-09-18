@@ -149,7 +149,7 @@
 #backBtn,
 #cancelBtn {
 	background: var(--light4);
-	color: var(--dark1);
+	color: var(--dark2);
 	text-decoration: none;
 }
 
@@ -162,15 +162,13 @@
 	color: white;
 }
 
-.pastEvent {
-	opacity: 0.9;
+.pastEvent .title,
+.pastEvent p {
+	color: var(--dark4);
 }
 
-.pastEvent .title,
-.pastEvent p,
-.pastEvent .tag,
-.pastEvent #eventDetailsBtn {
-	color: var(--dark3);
+.pastEvent #eventImg {
+	filter: contrast(20%) sepia(60%);
 }
 
 /* -------------------------------------------------------------------------- */
