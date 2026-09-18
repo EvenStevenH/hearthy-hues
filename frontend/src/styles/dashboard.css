@@ -56,7 +56,7 @@
 }
 
 .postStats {
-	color: var(--dark2);
+	color: var(--dark3);
 	font-style: italic;
 	margin-top: 0.5em;
 	max-height: 4em;

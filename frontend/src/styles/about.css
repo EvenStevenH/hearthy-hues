@@ -69,6 +69,16 @@
 	gap: 1rem;
 }
 
+.contactForm label[for] {
+	display: block;
+	font-weight: bold;
+	color: var(--dark2);
+	margin-bottom: 0.4em;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 0.9em;
+}
+
 .messageField {
 	display: flex;
 	flex-direction: column;

@@ -1,24 +1,33 @@
-import { formatDate, formatTimeRange } from "../../utils/eventUtils.js";
+import { formatDate, formatTimeRange, getCurrentDateTime } from "../../utils/eventUtils.js";
 import { useEvents } from "../../utils/EventsContext.jsx";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { FaBookmark, FaNewspaper } from "react-icons/fa6";
+import { MdEdit } from "react-icons/md";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 export default function EventCard({ event }) {
-	const { saveEvent, unsaveEvent, isSavedEvent, deleteEvent } = useEvents();
+	const { isOffline, saveEvent, unsaveEvent, isSavedEvent, deleteEvent } = useEvents();
 	const navigate = useNavigate();
 	const isSaved = isSavedEvent(event.id);
+	const isPastEvent = event.startDate < getCurrentDateTime();
 
 	async function handleDelete() {
+		if (isOffline) return;
 		await deleteEvent(event.id);
 		navigate("/events");
 	}
 
 	const handleEdit = () => {
+		if (isOffline) return;
 		navigate(`/events/${event.id}/edit`);
 	};
 
+	const handleViewDetails = () => {
+		navigate(`/events/${event.id}`);
+	};
+
 	return (
-		<div className="container card eventCard">
+		<div className={`container card eventCard ${isPastEvent ? "pastEvent" : ""}`}>
 			<img
 				src={event.img.url}
 				alt={event.img.alt}
@@ -54,29 +63,28 @@ export default function EventCard({ event }) {
 					onClick={() => (isSaved ? unsaveEvent(event.id) : saveEvent(event.id))}
 					className={isSaved ? "saved" : ""}
 				>
-					<FaBookmark /> {isSaved ? "Unsave" : "I'm Interested!"}
+					{isSaved ? "Unsave" : "Save"} <FaBookmark />
 				</button>
 
-				<Link
-					to={`/events/${event.id}`}
+				<button
+					onClick={handleViewDetails}
 					id="eventDetailsBtn"
-					className="button"
 				>
-					<FaNewspaper /> Details
-				</Link>
+					Details <FaNewspaper />
+				</button>
 
 				<button
 					id="eventEditBtn"
 					onClick={handleEdit}
 				>
-					Edit
+					Edit <MdEdit />
 				</button>
 
 				<button
 					id="eventDeleteBtn"
 					onClick={handleDelete}
 				>
-					Delete
+					Delete <FaRegTrashAlt />
 				</button>
 			</div>
 		</div>

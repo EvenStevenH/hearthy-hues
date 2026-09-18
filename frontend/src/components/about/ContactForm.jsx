@@ -119,7 +119,7 @@ export default function ContactForm() {
 			</div>
 
 			<button
-				id="submitBtn"
+				id="contactSubmitBtn"
 				type="submit"
 			>
 				<IoSend /> Submit

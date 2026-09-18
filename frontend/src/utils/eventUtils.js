@@ -29,6 +29,10 @@ export function formatDate(startDate, weekday, month) {
 	return new Date(startDate).toLocaleDateString("en-US", options);
 }
 
+export function getCurrentYear() {
+	return new Date().getFullYear();
+}
+
 export function getCurrentDateTime() {
 	const now = new Date();
 	const offset = now.getTimezoneOffset();

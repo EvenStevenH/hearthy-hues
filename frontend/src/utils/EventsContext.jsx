@@ -12,20 +12,22 @@ export function EventsProvider({ children }) {
 	const [events, setEvents] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
-	
+	const [isOffline, setIsOffline] = useState(false);
+
 	useEffect(() => {
 		async function loadEvents() {
 			try {
-				setLoading(true);
-				setError(null);
+				setLoading(true); // show loading before fetching
+				setError(null); // clear any previous errors
 				const data = await fetchAllEvents();
 				setEvents(data);
+				setIsOffline(false);
 			} catch (error) {
-				console.error(error);
 				setEvents(localEventData); // local data
-				setError(null);
+				setIsOffline(true);
+				console.error(error);
 			} finally {
-				setLoading(false);
+				setLoading(false); // hide loading when done
 			}
 		}
 		loadEvents();
@@ -61,16 +63,13 @@ export function EventsProvider({ children }) {
 		return setSavedEvents((prev) => [...prev, id]);
 	}
 
-	function isSavedEvent(id) {
-		savedEvents.includes(id);
-	}
-
 	return (
 		<EventsContext.Provider
 			value={{
 				events,
 				loading,
 				error,
+				isOffline,
 				fetchOneEvent,
 				createEvent,
 				updateEvent,
@@ -78,7 +77,7 @@ export function EventsProvider({ children }) {
 				savedEvents,
 				saveEvent,
 				unsaveEvent,
-				isSavedEvent,
+				isSavedEvent: (id) => savedEvents.includes(id),
 			}}
 		>
 			{children}

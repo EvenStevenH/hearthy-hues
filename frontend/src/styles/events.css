@@ -121,23 +121,35 @@
 	font-size: 0.9em;
 }
 
-.cardBtns {
+.cardBtns,
+.profileBtns {
+	gap: 0.5em;
 	margin-top: auto;
 	width: 100%;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 0.5em;
 }
 
-.cardBtns > * {
+.cardBtns {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.profileBtns {
+	display: flex;
+}
+
+.cardBtns > *,
+.eventFormActions > *,
+.profileBtns > *,
+#profileLinkBtn {
 	flex: 1;
+	justify-content: space-between;
 }
 
 #eventDetailsBtn,
 #backBtn,
 #cancelBtn {
 	background: var(--light4);
-	color: var(--dark1);
+	color: var(--dark2);
 	text-decoration: none;
 }
 
@@ -148,6 +160,15 @@
 #eventSaveBtn.saved {
 	background-color: var(--red1);
 	color: white;
+}
+
+.pastEvent .title,
+.pastEvent p {
+	color: var(--dark4);
+}
+
+.pastEvent #eventImg {
+	filter: contrast(20%) sepia(60%);
 }
 
 /* -------------------------------------------------------------------------- */

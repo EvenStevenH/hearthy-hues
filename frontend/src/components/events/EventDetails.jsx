@@ -5,18 +5,22 @@ import Loader from "../Loader.jsx";
 import ErrorMessage from "../ErrorMessage.jsx";
 import { FaBookmark } from "react-icons/fa6";
 import { IoIosArrowBack } from "react-icons/io";
+import { MdEdit } from "react-icons/md";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 export default function EventDetails() {
 	const { eventId } = useParams();
 	const navigate = useNavigate();
-	const { events, loading, error, saveEvent, unsaveEvent, isSavedEvent, deleteEvent } = useEvents();
+	const { events, loading, error, isOffline, saveEvent, unsaveEvent, isSavedEvent, deleteEvent } = useEvents();
 
 	async function handleDelete() {
+		if (isOffline) return;
 		await deleteEvent(event.id);
 		navigate("/events");
 	}
 
 	const handleEdit = () => {
+		if (isOffline) return;
 		navigate(`/events/${event.id}/edit`);
 	};
 
@@ -75,20 +79,29 @@ export default function EventDetails() {
 						onClick={() => (isSaved ? unsaveEvent(event.id) : saveEvent(event.id))}
 						className={isSaved ? "saved" : ""}
 					>
-						<FaBookmark /> {isSaved ? "Unsave" : "I'm Interested!"}
+						{isSaved ? "Unsave" : "Save"} <FaBookmark />
 					</button>
 
 					<button
 						id="backBtn"
-						className="button"
 						onClick={handleBack}
 					>
-						<IoIosArrowBack /> Back
+						Back <IoIosArrowBack />
 					</button>
 
-					<button onClick={handleEdit}>Edit</button>
+					<button
+						id="eventEditBtn"
+						onClick={handleEdit}
+					>
+						Edit <MdEdit />
+					</button>
 
-					<button onClick={handleDelete}>Delete</button>
+					<button
+						id="eventDeleteBtn"
+						onClick={handleDelete}
+					>
+						Delete <FaRegTrashAlt />
+					</button>
 				</div>
 			</section>
 		</main>

@@ -7,7 +7,6 @@ export function useFetch(url) {
 
 	useEffect(() => {
 		if (!url) return;
-
 		async function fetchData() {
 			try {
 				setLoading(true); // show loading before fetching
@@ -25,7 +24,7 @@ export function useFetch(url) {
 				}
 				setData(data);
 			} catch (error) {
-				setError(error.message);
+				setError(error);
 				console.error(error);
 			} finally {
 				setLoading(false); // hide loading when done
