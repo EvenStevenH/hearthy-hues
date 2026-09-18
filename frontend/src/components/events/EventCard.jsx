@@ -6,17 +6,19 @@ import { MdEdit } from "react-icons/md";
 import { FaRegTrashAlt } from "react-icons/fa";
 
 export default function EventCard({ event }) {
-	const { saveEvent, unsaveEvent, isSavedEvent, deleteEvent } = useEvents();
+	const { isOffline, saveEvent, unsaveEvent, isSavedEvent, deleteEvent } = useEvents();
 	const navigate = useNavigate();
 	const isSaved = isSavedEvent(event.id);
 	const isPastEvent = event.startDate < getCurrentDateTime();
 
 	async function handleDelete() {
+		if (isOffline) return;
 		await deleteEvent(event.id);
 		navigate("/events");
 	}
 
 	const handleEdit = () => {
+		if (isOffline) return;
 		navigate(`/events/${event.id}/edit`);
 	};
 

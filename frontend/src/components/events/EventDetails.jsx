@@ -11,14 +11,16 @@ import { FaRegTrashAlt } from "react-icons/fa";
 export default function EventDetails() {
 	const { eventId } = useParams();
 	const navigate = useNavigate();
-	const { events, loading, error, saveEvent, unsaveEvent, isSavedEvent, deleteEvent } = useEvents();
+	const { events, loading, error, isOffline, saveEvent, unsaveEvent, isSavedEvent, deleteEvent } = useEvents();
 
 	async function handleDelete() {
+		if (isOffline) return;
 		await deleteEvent(event.id);
 		navigate("/events");
 	}
 
 	const handleEdit = () => {
+		if (isOffline) return;
 		navigate(`/events/${event.id}/edit`);
 	};
 
