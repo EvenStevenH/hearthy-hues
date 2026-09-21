@@ -32,7 +32,6 @@ export default function SavedIdeas() {
 										<p>
 											<b>Category</b>: {idea.category}
 										</p>
-
 										<p>
 											<b>Subject</b>: {idea.subject}
 										</p>
@@ -48,7 +47,7 @@ export default function SavedIdeas() {
 							))}
 						</div>
 					) : (
-						<p className="emptyMsg">No drawing subjects saved.</p>
+						<p className="emptyMsg">No subjects saved.</p>
 					)}
 				</section>
 
@@ -64,7 +63,7 @@ export default function SavedIdeas() {
 								>
 									<div>
 										<p>
-											<b>Color Harmony</b>: {harmony.harmony}
+											<b>Harmony</b>: {harmony.harmony}
 										</p>
 
 										<ul className="randomHarmony">
