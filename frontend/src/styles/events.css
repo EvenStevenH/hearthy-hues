@@ -147,7 +147,8 @@
 
 #eventDetailsBtn,
 #backBtn,
-#cancelBtn {
+#cancel,
+#resetFiltersBtn {
 	background: var(--light4);
 	color: var(--dark2);
 	text-decoration: none;
@@ -170,9 +171,6 @@
 .pastEvent #eventImg {
 	filter: contrast(20%) sepia(60%);
 }
-
-/* -------------------------------------------------------------------------- */
-/* event details */
 
 .eventDetails {
 	padding: 3em;
@@ -198,9 +196,6 @@
 	margin-top: 1em;
 }
 
-/* -------------------------------------------------------------------------- */
-/* event form */
-
 #eventCreateBtn {
 	margin: 2em 0;
 	font-size: 1.1em;
@@ -218,16 +213,36 @@
 	gap: 1em;
 }
 
-.eventForm {
-	gap: 1.5em;
-	max-width: 800px;
+#resetFiltersBtn {
+	font-size: 1.1em;
+}
+
+.filterSection {
+	display: flex;
+	align-items: flex-end;
+	flex-wrap: wrap;
+}
+
+.filterSection > div {
+	flex: 1 auto;
+}
+
+.eventForm,
+.filterSection {
+	gap: 1em;
 	margin: 0 auto;
+	margin-bottom: 2.5em;
+}
+
+.eventForm {
+	max-width: 800px;
 }
 
 .eventForm fieldset {
 	border: none;
 }
 
+.filterSection label,
 .eventForm label[for],
 .eventForm legend {
 	display: block;

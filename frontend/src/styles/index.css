@@ -1,6 +1,7 @@
 @import url("./about.css");
 @import url("./dashboard.css");
 @import url("./events.css");
+@import url("./ideas.css");
 @import url("./login.css");
 @import url("./user.css");
 
@@ -82,7 +83,6 @@ header {
 	padding: 2em;
 	color: var(--dark1);
 	display: flex;
-	/* flex-direction: column; */
 	box-shadow: 5px 5px 5px rgba(42, 41, 41, 0.2);
 }
 
@@ -253,6 +253,10 @@ select {
 	border: var(--light4) solid 1px;
 	resize: none;
 	background-color: var(--light2);
+}
+
+.emptyMsg {
+	text-align: center;
 }
 
 /* -------------------------------------------------------------------------- */
