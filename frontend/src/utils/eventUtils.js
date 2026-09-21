@@ -1,3 +1,9 @@
+import { eventImages } from "../data/images.js";
+
+export function getEventImage(imageKey) {
+	return eventImages[imageKey] ?? eventImages.coffee;
+}
+
 export function formatTimeRange(startDate, endDate) {
 	const options = {
 		hour: "numeric",
