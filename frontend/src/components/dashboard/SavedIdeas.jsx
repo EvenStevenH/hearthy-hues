@@ -42,7 +42,7 @@ export default function SavedIdeas() {
 										onClick={() => removeIdea(index)}
 										id="removeSavedIdeaBtn"
 									>
-										Remove <FaTrash />
+										<FaTrash />
 									</button>
 								</article>
 							))}
@@ -82,7 +82,7 @@ export default function SavedIdeas() {
 										onClick={() => removeHarmony(index)}
 										id="removeSavedIdeaBtn"
 									>
-										Remove <FaTrash />
+										<FaTrash />
 									</button>
 								</article>
 							))}

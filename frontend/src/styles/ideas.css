@@ -1,0 +1,113 @@
+.savedIdeas {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1em;
+	margin-bottom: 2em;
+	width: 100%;
+	justify-content: stretch;
+}
+
+.savedIdeasSection {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 2em;
+	flex: 1;
+}
+
+.randomizerButtons {
+	display: flex;
+	gap: 0.5em;
+	flex-wrap: wrap;
+}
+
+#randomizer,
+#feedSection {
+	flex-direction: column;
+}
+
+#randomizer > div {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.randomIdea {
+	display: flex;
+	flex-direction: row;
+}
+
+.randomIdea p {
+	flex: 1;
+}
+
+.randomHarmony {
+	display: flex;
+	width: 100%;
+	min-width: 0;
+	padding-inline-start: 0;
+	border-radius: 0.5em;
+	overflow: hidden;
+	border: solid 1px var(--light3);
+}
+
+.colorSwatch {
+	flex: 1;
+	list-style: none;
+	aspect-ratio: 2 / 1;
+}
+
+#randomSubjectBtn,
+#saveSubjectBtn,
+#randomHarmonyBtn,
+#saveHarmonyBtn {
+	flex: 1;
+}
+
+#saveHarmonyBtn,
+#saveSubjectBtn {
+	background-color: var(--orange2);
+}
+
+.savedIdea,
+.savedHarmony {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1em;
+	border-bottom: solid 1px var(--orange1);
+	padding: 1em 0;
+}
+
+.savedIdea:first-child,
+.savedHarmony:first-child {
+	padding-top: 0;
+}
+
+.savedIdea:last-child,
+.savedHarmony:last-child {
+	border-bottom: none;
+}
+
+.savedHarmony > div,
+.savedIdea > div {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+.savedIdea > div,
+.savedHarmony > div {
+	flex: 1;
+	min-width: 0;
+}
+
+.savedIdeasList,
+.savedHarmoniesList {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.savedHarmony .randomHarmony {
+	margin: 0;
+}
