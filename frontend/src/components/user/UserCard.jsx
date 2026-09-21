@@ -37,18 +37,19 @@ export default function UserCard({ user, type = "user" }) {
 					<p className="bio">{user.bio}</p>
 				</div>
 
-				<div className="cardBtns">
+				<div className="profileBtns">
 					<a
 						href={user.website}
 						target="_blank"
 						className="button"
+						id="profileLinkBtn"
 					>
-						<FaLink /> Website
+						Website <FaLink />
 					</a>
 
 					{type === "friend" && (
-						<button>
-							<MdMessage /> Message
+						<button id="profileMsgBtn">
+							Message <MdMessage />
 						</button>
 					)}
 				</div>

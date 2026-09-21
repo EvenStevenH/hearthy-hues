@@ -4,6 +4,9 @@ import { useEvents } from "../../utils/EventsContext.jsx";
 import Loader from "../Loader.jsx";
 import ErrorMessage from "../ErrorMessage.jsx";
 import { getCurrentDateTime } from "../../utils/eventUtils.js";
+import { FaCheck } from "react-icons/fa";
+import { IoIosArrowBack } from "react-icons/io";
+import { eventImages } from "../../data/images.js";
 
 export const tags = ["comics", "convention", "crafts", "exhibition", "festival", "film", "market", "open studio", "painting", "performance", "photography", "sculpture", "social", "talks", "tour", "workshop"];
 
@@ -15,7 +18,7 @@ function getEmptyEvent() {
 		endDate: getCurrentDateTime(),
 		location: "",
 		notes: "",
-		img: "",
+		img: "coffee",
 		price: 0,
 		tags: [],
 		organizer: {
@@ -206,9 +209,18 @@ export default function EventFormPage() {
 							name="img"
 							value={formData.img}
 							onChange={handleChange}
+							required
 						>
-							<option value="">Select an image</option>
+							{Object.keys(eventImages).map((key) => (
+								<option
+									key={key}
+									value={key}
+								>
+									{key}
+								</option>
+							))}
 						</select>
+
 						{errors.img && <p className="formError">{errors.img}</p>}
 					</div>
 				</div>
@@ -246,7 +258,7 @@ export default function EventFormPage() {
 						id="submitBtn"
 						type="submit"
 					>
-						{isEditing ? "Save Changes" : "Create Event"}
+						{isEditing ? "Save Changes" : "Create Event"} <FaCheck />
 					</button>
 
 					<button
@@ -254,7 +266,7 @@ export default function EventFormPage() {
 						type="button"
 						onClick={handleCancel}
 					>
-						Cancel
+						Cancel <IoIosArrowBack />
 					</button>
 				</div>
 			</form>

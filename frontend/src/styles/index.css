@@ -1,6 +1,7 @@
 @import url("./about.css");
 @import url("./dashboard.css");
 @import url("./events.css");
+@import url("./ideas.css");
 @import url("./login.css");
 @import url("./user.css");
 
@@ -11,8 +12,9 @@
 	--light4: #bfb699;
 
 	--dark1: #2b1a12;
-	--dark2: #6e5b38;
-	--dark3: #796e5a;
+	--dark2: #523428;
+	--dark3: #6e5b38;
+	--dark4: #796e5a;
 
 	--red1: #a55c0d;
 	--red2: #80450e;
@@ -81,7 +83,6 @@ header {
 	padding: 2em;
 	color: var(--dark1);
 	display: flex;
-	/* flex-direction: column; */
 	box-shadow: 5px 5px 5px rgba(42, 41, 41, 0.2);
 }
 
@@ -180,7 +181,7 @@ nav a:hover:not(.active) {
 .navIcon {
 	width: 20px;
 	height: 20px;
-	color: var(--dark3);
+	color: var(--dark4);
 }
 
 .navBottom {
@@ -252,6 +253,10 @@ select {
 	border: var(--light4) solid 1px;
 	resize: none;
 	background-color: var(--light2);
+}
+
+.emptyMsg {
+	text-align: center;
 }
 
 /* -------------------------------------------------------------------------- */

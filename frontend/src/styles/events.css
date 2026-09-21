@@ -58,6 +58,8 @@
 	text-transform: uppercase;
 	display: flex;
 	justify-content: flex-start;
+	flex-wrap: wrap;
+	align-items: center;
 	gap: 0.5em;
 	margin-bottom: 0.5em;
 }
@@ -121,23 +123,36 @@
 	font-size: 0.9em;
 }
 
-.cardBtns {
+.cardBtns,
+.profileBtns {
+	gap: 0.5em;
 	margin-top: auto;
 	width: 100%;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 0.5em;
 }
 
-.cardBtns > * {
+.cardBtns {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.profileBtns {
+	display: flex;
+}
+
+.cardBtns > *,
+.eventFormActions > *,
+.profileBtns > *,
+#profileLinkBtn {
 	flex: 1;
+	justify-content: space-between;
 }
 
 #eventDetailsBtn,
 #backBtn,
-#cancelBtn {
+#cancel,
+#resetFiltersBtn {
 	background: var(--light4);
-	color: var(--dark1);
+	color: var(--dark2);
 	text-decoration: none;
 }
 
@@ -150,8 +165,14 @@
 	color: white;
 }
 
-/* -------------------------------------------------------------------------- */
-/* event details */
+.pastEvent .title,
+.pastEvent p {
+	color: var(--dark4);
+}
+
+.pastEvent #eventImg {
+	filter: contrast(20%) sepia(60%);
+}
 
 .eventDetails {
 	padding: 3em;
@@ -177,9 +198,6 @@
 	margin-top: 1em;
 }
 
-/* -------------------------------------------------------------------------- */
-/* event form */
-
 #eventCreateBtn {
 	margin: 2em 0;
 	font-size: 1.1em;
@@ -197,16 +215,36 @@
 	gap: 1em;
 }
 
-.eventForm {
-	gap: 1.5em;
-	max-width: 800px;
+#resetFiltersBtn {
+	font-size: 1.1em;
+}
+
+.filterSection {
+	display: flex;
+	align-items: flex-end;
+	flex-wrap: wrap;
+}
+
+.filterSection > div {
+	flex: 1 auto;
+}
+
+.eventForm,
+.filterSection {
+	gap: 1em;
 	margin: 0 auto;
+	margin-bottom: 2.5em;
+}
+
+.eventForm {
+	max-width: 800px;
 }
 
 .eventForm fieldset {
 	border: none;
 }
 
+.filterSection label,
 .eventForm label[for],
 .eventForm legend {
 	display: block;

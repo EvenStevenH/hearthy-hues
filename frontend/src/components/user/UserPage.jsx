@@ -7,6 +7,7 @@ import { user as userData, friends as friendsData } from "../../data/user.js";
 export default function UserPage() {
 	const user = useFetch(userData);
 	const friends = useFetch(friendsData);
+
 	if (user.loading || friends.loading) return <Loader />;
 	if (user.error || friends.error)
 		return (

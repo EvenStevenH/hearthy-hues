@@ -5,18 +5,23 @@ import Loader from "../Loader.jsx";
 import ErrorMessage from "../ErrorMessage.jsx";
 import { FaBookmark } from "react-icons/fa6";
 import { IoIosArrowBack } from "react-icons/io";
+import { MdEdit } from "react-icons/md";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { getEventImage } from "../../utils/eventUtils.js";
 
 export default function EventDetails() {
 	const { eventId } = useParams();
 	const navigate = useNavigate();
-	const { events, loading, error, saveEvent, unsaveEvent, isSavedEvent, deleteEvent } = useEvents();
+	const { events, loading, error, isOffline, saveEvent, unsaveEvent, isSavedEvent, deleteEvent } = useEvents();
 
 	async function handleDelete() {
+		if (isOffline) return;
 		await deleteEvent(event.id);
 		navigate("/events");
 	}
 
 	const handleEdit = () => {
+		if (isOffline) return;
 		navigate(`/events/${event.id}/edit`);
 	};
 
@@ -27,6 +32,7 @@ export default function EventDetails() {
 	const event = events.find((event) => String(event.id) === eventId);
 	if (!event) return navigate("/events");
 	const isSaved = isSavedEvent(event.id);
+	const image = getEventImage(event.img);
 
 	if (loading) return <Loader />;
 	if (error) return error && <ErrorMessage message={error} />;
@@ -34,8 +40,8 @@ export default function EventDetails() {
 	return (
 		<main className="container eventDetails">
 			<img
-				src={event.img.url}
-				alt={event.img.alt}
+				src={event.img.url || image.url}
+				alt={event.img.alt || image.alt || `Image for ${event.title}`}
 				id="eventImg"
 			/>
 
@@ -75,20 +81,29 @@ export default function EventDetails() {
 						onClick={() => (isSaved ? unsaveEvent(event.id) : saveEvent(event.id))}
 						className={isSaved ? "saved" : ""}
 					>
-						<FaBookmark /> {isSaved ? "Unsave" : "I'm Interested!"}
+						{isSaved ? "Unsave" : "Save"} <FaBookmark />
 					</button>
 
 					<button
 						id="backBtn"
-						className="button"
 						onClick={handleBack}
 					>
-						<IoIosArrowBack /> Back
+						Back <IoIosArrowBack />
 					</button>
 
-					<button onClick={handleEdit}>Edit</button>
+					<button
+						id="eventEditBtn"
+						onClick={handleEdit}
+					>
+						Edit <MdEdit />
+					</button>
 
-					<button onClick={handleDelete}>Delete</button>
+					<button
+						id="eventDeleteBtn"
+						onClick={handleDelete}
+					>
+						Delete <FaRegTrashAlt />
+					</button>
 				</div>
 			</section>
 		</main>

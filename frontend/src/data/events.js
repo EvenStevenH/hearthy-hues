@@ -1,12 +1,15 @@
 import { eventImages as images } from "./images";
+import { getCurrentYear } from "../utils/eventUtils";
+
+const currentYear = getCurrentYear();
 
 export const tags = ["comics", "convention", "crafts", "exhibition", "festival", "film", "market", "open studio", "painting", "performance", "photography", "sculpture", "social", "talks", "tour", "workshop"];
 
 export const events = [
 	{
 		id: 1783457854131,
-		startDate: "2026-07-01T10:00:00",
-		endDate: "2026-07-01T15:00:00",
+		startDate: `${currentYear}-07-01T10:00:00`,
+		endDate: `${currentYear}-07-01T15:00:00`,
 		title: "Coffee Talk",
 		description: "A weekly casual get-together to sketch and meet up with local artists!",
 		tags: ["social"],
@@ -18,8 +21,8 @@ export const events = [
 	},
 	{
 		id: 1783457854132,
-		startDate: "2026-08-15T18:00:00",
-		endDate: "2026-08-16T12:00:00",
+		startDate: `${currentYear}-08-15T18:00:00`,
+		endDate: `${currentYear}-08-16T12:00:00`,
 		title: "Royal Art Collection",
 		description: "In celebration of our 20th anniversary, gallery specialists offer insightful dialogues about the collection's history, founder, and highlighted pieces. Explore 4,000 years of art and the latest installations from emerging artists.",
 		tags: ["tour", "exhibition", "talks"],
@@ -31,8 +34,8 @@ export const events = [
 	},
 	{
 		id: 1783457854133,
-		startDate: "2026-09-20T14:00:00",
-		endDate: "2026-09-21T17:00:00",
+		startDate: `${currentYear}-09-20T14:00:00`,
+		endDate: `${currentYear}-09-21T17:00:00`,
 		title: "Handmade Haven",
 		description: "Artisanal goods, pop-up shops, themed costume contests, fundraising auctions, and free professional portraits.",
 		tags: ["market"],
@@ -44,8 +47,8 @@ export const events = [
 	},
 	{
 		id: 1783457854134,
-		startDate: "2026-10-05T19:00:00",
-		endDate: "2026-10-06T22:00:00",
+		startDate: `${currentYear}-10-05T19:00:00`,
+		endDate: `${currentYear}-10-06T22:00:00`,
 		title: "Animated Film Festival",
 		description: "A selection of international films, with awards ceremony and follow-up panel. An opportunity to hear directly from our roster of award-winning directors and visionaries and explore the inspirations, ideas, and themes behind their works.",
 		tags: ["film", "festival"],
@@ -57,8 +60,8 @@ export const events = [
 	},
 	{
 		id: 1783457854135,
-		startDate: "2026-11-10T09:00:00",
-		endDate: "2026-11-12T17:00:00",
+		startDate: `${currentYear}-11-10T09:00:00`,
+		endDate: `${currentYear}-11-12T17:00:00`,
 		title: "Signature Workshop Series",
 		description: "Artists open their studios for public viewing, with hands-on mini-classes on design and printmaking.",
 		tags: ["open studio", "workshop"],
@@ -70,8 +73,8 @@ export const events = [
 	},
 	{
 		id: 1783457854136,
-		startDate: "2026-12-10T09:00:00",
-		endDate: "2026-12-12T17:00:00",
+		startDate: `${currentYear}-12-10T09:00:00`,
+		endDate: `${currentYear}-12-12T17:00:00`,
 		title: "Papercraft and Clip Club",
 		description: "Planned projects and collaging with guided instruction in a comfy crafting atmosphere.",
 		tags: ["crafts"],
@@ -83,8 +86,8 @@ export const events = [
 	},
 	{
 		id: 1783457854137,
-		startDate: "2026-06-10T09:00:00",
-		endDate: "2026-06-12T17:00:00",
+		startDate: `${currentYear}-03-10T09:00:00`,
+		endDate: `${currentYear}-06-12T17:00:00`,
 		title: "Watercolor on the Water",
 		description: "Learn to paint with watercolor in this beginner-friendly plein air series!",
 		tags: ["painting"],
@@ -96,8 +99,8 @@ export const events = [
 	},
 	{
 		id: 1783457854138,
-		startDate: "2026-07-10T09:00:00",
-		endDate: "2026-07-12T17:00:00",
+		startDate: `${currentYear + 1}-07-10T09:00:00`,
+		endDate: `${currentYear + 1}-07-12T17:00:00`,
 		title: "Southpaw's Drink and Draw",
 		description: "Live nude life drawing sessions with different models on rotation. Free snacks and beverages for all attendees!",
 		tags: ["open studio", "social"],
@@ -109,8 +112,8 @@ export const events = [
 	},
 	{
 		id: 1783457854139,
-		startDate: "2026-08-10T09:00:00",
-		endDate: "2026-08-12T17:00:00",
+		startDate: `${currentYear + 1}-06-10T09:00:00`,
+		endDate: `${currentYear + 1}-06-12T17:00:00`,
 		title: "Late Nights at Hludwig's",
 		description: "Enjoy live music and drink specials, featuring critically-acclaimed bands such as Wild Dog Daze and The Hearthwood Howlers.",
 		tags: ["social", "performance"],

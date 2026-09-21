@@ -57,7 +57,7 @@
 }
 
 .loginTop p {
-	color: var(--dark2);
+	color: var(--dark3);
 }
 
 .loginPanel a {
@@ -78,7 +78,7 @@
 	max-width: 300px;
 	margin: auto;
 	margin-top: 1em;
-	color: var(--dark2);
+	color: var(--dark3);
 	text-align: center;
 	display: flex;
 	flex-direction: column;
