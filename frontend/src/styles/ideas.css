@@ -111,6 +111,10 @@
 	margin: 0;
 }
 
+#removeSavedIdeaBtn {
+	aspect-ratio: 1/1;
+}
+
 @media screen and (max-width: 600px) {
 	.savedIdeasSection {
 		min-width: auto;
