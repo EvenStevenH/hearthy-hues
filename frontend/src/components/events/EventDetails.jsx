@@ -7,6 +7,7 @@ import { FaBookmark } from "react-icons/fa6";
 import { IoIosArrowBack } from "react-icons/io";
 import { MdEdit } from "react-icons/md";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { getEventImage } from "../../utils/eventUtils.js";
 
 export default function EventDetails() {
 	const { eventId } = useParams();
@@ -31,6 +32,7 @@ export default function EventDetails() {
 	const event = events.find((event) => String(event.id) === eventId);
 	if (!event) return navigate("/events");
 	const isSaved = isSavedEvent(event.id);
+	const image = getEventImage(event.img);
 
 	if (loading) return <Loader />;
 	if (error) return error && <ErrorMessage message={error} />;
@@ -38,8 +40,8 @@ export default function EventDetails() {
 	return (
 		<main className="container eventDetails">
 			<img
-				src={event.img.url}
-				alt={event.img.alt}
+				src={event.img.url || image.url}
+				alt={event.img.alt || image.alt || `Image for ${event.title}`}
 				id="eventImg"
 			/>
 

@@ -4,12 +4,14 @@ import { useNavigate } from "react-router";
 import { FaBookmark, FaNewspaper } from "react-icons/fa6";
 import { MdEdit } from "react-icons/md";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { getEventImage } from "../../utils/eventUtils.js";
 
 export default function EventCard({ event }) {
 	const { isOffline, saveEvent, unsaveEvent, isSavedEvent, deleteEvent } = useEvents();
 	const navigate = useNavigate();
 	const isSaved = isSavedEvent(event.id);
 	const isPastEvent = event.startDate < getCurrentDateTime();
+	const image = getEventImage(event.img);
 
 	async function handleDelete() {
 		if (isOffline) return;
@@ -29,8 +31,8 @@ export default function EventCard({ event }) {
 	return (
 		<div className={`container card eventCard ${isPastEvent ? "pastEvent" : ""}`}>
 			<img
-				src={event.img.url}
-				alt={event.img.alt}
+				src={event.img.url || image.url}
+				alt={event.img.alt || image.alt || `Image for ${event.title}`}
 				id="eventImg"
 			/>
 
