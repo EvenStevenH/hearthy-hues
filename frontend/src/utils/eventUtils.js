@@ -47,3 +47,22 @@ export function sortByStartDate(a, b, date) {
 export function formatPrice(price) {
 	return price ? `$${price}` : "Free";
 }
+
+export function getFilteredEvents(events, filters) {
+	const now = new Date();
+	const start = filters.dateStart ? new Date(filters.dateStart) : null;
+	const end = filters.dateEnd ? new Date(filters.dateEnd) : null;
+	const min = parseFloat(filters.priceMin);
+	const max = parseFloat(filters.priceMax);
+
+	return events.filter((e) => {
+		if (start && new Date(e.startDate) < start) return false;
+		if (end && new Date(e.startDate) > end) return false;
+		if (filters.hidePastEvents === "active" && new Date(e.startDate) <= now) return false;
+		if (filters.hidePastEvents === "inactive" && new Date(e.startDate) > now) return false;
+		if (filters.selectedTag && !e.tags?.includes(filters.selectedTag)) return false;
+		if (!isNaN(min) && e.price < min) return false;
+		if (!isNaN(max) && e.price > max) return false;
+		return true;
+	});
+}
