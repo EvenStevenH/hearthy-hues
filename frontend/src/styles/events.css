@@ -149,7 +149,7 @@
 
 #eventDetailsBtn,
 #backBtn,
-#cancel,
+#cancelBtn,
 #resetFiltersBtn {
 	background: var(--light4);
 	color: var(--dark2);
