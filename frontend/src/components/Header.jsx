@@ -1,7 +1,7 @@
 import Logo from "./Logo";
 import { NavLink, useNavigate } from "react-router";
 import { GoHomeFill } from "react-icons/go";
-import { FaRegCalendarAlt, FaInfoCircle } from "react-icons/fa";
+import { FaRegCalendarAlt, FaInfoCircle, FaBookmark } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineTransitEnterexit } from "react-icons/md";
 
@@ -33,6 +33,9 @@ export default function Header({ menuOpen, setMenuOpen, setIsLoggedIn }) {
 				</NavLink>
 				<NavLink to="/events">
 					<FaRegCalendarAlt className="navIcon" /> Events
+				</NavLink>
+				<NavLink to="/saved-ideas">
+					<FaBookmark className="navIcon" /> Ideas
 				</NavLink>
 				<NavLink to="/user">
 					<CgProfile className="navIcon" /> Your Profile
