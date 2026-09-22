@@ -67,7 +67,6 @@
 | UI/UX    | CSS, Framer Motion, React Icons                                                | Styling, responsive layout, transitions, and icons                   |
 | Backend  | Java 21, Spring Boot, Maven, Spring Web MVC, Spring Data JPA, Hibernate, MySQL | REST API, ORM/persistence mapping, and relational data storage       |
 | Quality  | ESLint, Vitest                                                                 | Static analysis and unit testing                                     |
-|          |
 
 ## Reference
 
@@ -162,12 +161,16 @@ erDiagram
 - The deployed GitHub Pages frontend does not host the Spring Boot API. Full CRUD requires a separately running backend with a reachable MySQL database.
 - The frontend API URL is currently hardcoded to `http://localhost:8080/api/events`; deployment should use an environment-based API URL.
 - Contact form submissions are intentionally mocked and are not sent to a service.
-- Event and organizer responses do not yet provide dedicated not-found or validation error payloads from the backend.
+- Event and organizer responses do not provide dedicated not-found or validation error payloads from the backend.
 - Future feature ideas include production deployment of the API and database, environment-based configuration, user accounts, organizer ownership, search, pagination, event moderation, and integration of social media data from public APIs.
 
-### Wireframes
+<div align="center">
 
-![wireframes showing rough visual plan of app](media/wireframes.jpg)
+| Wireframes                                                                                        |
+| ------------------------------------------------------------------------------------------------- |
+| <img src="media/wireframes.jpg" width="1000px" alt="wireframes showing rough visual plan of app"> |
+
+</div>
 
 </details>
 
