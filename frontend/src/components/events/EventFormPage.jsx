@@ -30,7 +30,7 @@ function getEmptyEvent() {
 export default function EventFormPage() {
 	const { eventId } = useParams();
 	const navigate = useNavigate();
-	const { createEvent, updateEvent, fetchOneEvent } = useEvents();
+	const { isOffline, createEvent, updateEvent, fetchOneEvent } = useEvents();
 	const isEditing = Boolean(eventId);
 	const [formData, setFormData] = useState(getEmptyEvent);
 	const [loading, setLoading] = useState(isEditing);
@@ -89,7 +89,7 @@ export default function EventFormPage() {
 	async function handleSubmit(event) {
 		event.preventDefault();
 		if (!validateForm()) return;
-
+		if (isOffline) return;
 		try {
 			const eventData = { ...formData };
 			let savedEvent;
